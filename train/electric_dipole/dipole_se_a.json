@@ -1,0 +1,71 @@
+{
+    "_comment": " model parameters",
+    "model": {
+	"type_map":	["C","O","H"],
+	"descriptor" :{
+	    "type":		"se_e2_a",
+            "sel":		[36,64,128],
+            "rcut_smth":	3.00,
+            "rcut":		6.00,
+            "neuron":		[40, 40, 40],
+	    "resnet_dt":	false,
+	    "axis_neuron":	12,
+	    "seed":		1,
+	    "_comment":		"that's all"
+	},
+	"fitting_net" : {
+            "type":		"dipole",
+            "sel_type":         [0,1],
+	    "neuron":		[60, 60, 60],
+	    "resnet_dt":	true,
+	    "seed":		1,
+	    "_comment":		" that's all"
+	},
+	"_comment":	" that's all"
+    },
+
+    "learning_rate" :{
+	"type":		"exp",
+	"start_lr":	0.005,
+	"decay_steps":	5000,
+	"decay_rate":	0.95,
+	"_comment":	"that's all"
+    },
+
+    "loss" :{
+	"type":			"tensor",
+	"pref":			1.0,
+	"pref_atomic":		1.0,
+	"_comment": 		"that's all"
+    },
+
+    "_comment": " traing controls",
+    "training" : {
+      "systems":	["../../raw_data_dipole/10/",
+      	                 "../../raw_data_dipole/12/",
+      	                 "../../raw_data_dipole/14/",
+      	                 "../../raw_data_dipole/16/",
+      	                 "../../raw_data_dipole/19/",
+      	                 "../../raw_data_dipole/water/"],
+	"set_prefix":	"set",    
+	"stop_batch":	1000000,
+	"batch_size":	1,
+
+	"seed":		1,
+
+	"_comment": " display and restart",
+	"_comment": " frequencies counted in batch",
+	"disp_file":	"lcurve.out",
+	"disp_freq":	100,
+	"numb_test":	10,
+	"save_freq":	1000,
+	"disp_training":true,
+	"time_training":true,
+	"profiling":	false,
+	"profiling_file":"timeline.json",
+	"_comment":	"that's all"
+    },
+
+    "_comment":		"that's all"
+}
+
